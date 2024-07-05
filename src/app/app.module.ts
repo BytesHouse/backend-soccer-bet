@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from 'src/modules/users/users.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from 'src/entities/user.entity';
+// import { UserEntity } from 'src/entities/user.entity';
 
 @Module({
   imports: [
