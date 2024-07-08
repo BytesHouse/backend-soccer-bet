@@ -6,8 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Soccer Bet')
-    .setDescription('Soccer Bet API description')
+    .setTitle('Soccer Bet REST Api')
+    .setDescription(
+      'This API defines endpoints for a soccer betting platform, allowing users to access various functionalities related to betting on soccer matches. The API provides secure access to real-time data and allows users to place bets, view match schedules, and manage their accounts.',
+    )
     .setVersion('1.0')
     .addTag('soccer-bet')
     .build();

@@ -5,7 +5,7 @@ export class BaseUser {
   @ApiProperty()
   username?: string;
   @ApiProperty()
-  email: string;
+  email?: string;
   @ApiProperty()
   password: string;
   @ApiProperty()

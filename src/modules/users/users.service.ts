@@ -3,20 +3,18 @@ import { InjectRepository } from '@nestjs/typeorm';
 // import { BaseUser } from '../dto/user/base-user.dto';
 import { CreateUserDto } from 'src/dto/user/create-user.dto';
 import { UserEntity } from 'src/entities/user.entity';
-import { MongoRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UserEntity)
-    private userRepository: MongoRepository<UserEntity>,
+    private userRepository: Repository<UserEntity>,
   ) {}
   async findOneBy(email: string): Promise<UserEntity | undefined> {
     return await this.userRepository.findOneBy({ email: email });
   }
-  async create(createUserDto: CreateUserDto) {
-    return this.userRepository.save({
-      ...createUserDto,
-      createdAt: new Date(),
-    });
+  async create({ username, password }: CreateUserDto) {
+    const newUser = this.userRepository.create({ username, password });
+    return this.userRepository.save(newUser);
   }
 }

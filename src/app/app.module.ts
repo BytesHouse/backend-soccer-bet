@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CompetitionModule } from 'src/competition/competition.module';
+import { CompetitionModule } from 'src/modules/competition/competition.module';
 import { ProvidersModule } from 'src/providers/providers.module';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from 'src/modules/users/users.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// import { UserEntity } from 'src/entities/user.entity';
+import { UserEntity } from 'src/entities/user.entity';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: process.env.PG_USERNAME,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB_NAME,
-      // entities: [UserEntity],
+      entities: [UserEntity],
       synchronize: true,
     }),
     CompetitionModule,
